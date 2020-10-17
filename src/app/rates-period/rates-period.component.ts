@@ -15,7 +15,7 @@ import { RatesPeriodService } from './rates-period.service';
 })
 export class RatesPeriodComponent implements OnInit {
 
-  public rates$: Observable<any>;
+  public rates$: Observable<Rates[]>;
   public form: FormGroup;
   public currencyOptions = AllCurrencyNames;
   public minDate = new Date(GLOBALS.minDate);

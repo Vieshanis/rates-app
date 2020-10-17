@@ -25,8 +25,8 @@
     </div>
   </form>
 
-  <div class="custom-stuff-center">
-    <table mat-table [dataSource]="rates$" class="mat-elevation-z8">
+  <div class="custom-stuff-center" *ngIf="rates$ | async as rates">
+    <table mat-table [dataSource]="rates" class="mat-elevation-z8">
 
       <div *ngFor="let header of displayedColumns">
         <ng-container matColumnDef="{{header}}">
