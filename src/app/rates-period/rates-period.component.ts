@@ -39,13 +39,11 @@ export class RatesPeriodComponent implements OnInit {
         .pipe(startWith(GLOBALS.defaultCurrency)),
       this.form.controls.startDate.valueChanges
         .pipe(
-          filter(val => moment(GLOBALS.minDate).isSameOrBefore(val) && moment().isSameOrAfter(val)),
-          startWith(moment())
+          filter(val => moment(GLOBALS.minDate).isSameOrBefore(val) && moment().isSameOrAfter(val))
         ),
       this.form.controls.endDate.valueChanges
         .pipe(
-          filter(val => moment(GLOBALS.minDate).isSameOrBefore(val) && moment().isSameOrAfter(val)),
-          startWith(moment())
+          filter(val => moment(GLOBALS.minDate).isSameOrBefore(val) && moment().isSameOrAfter(val))
         )
     ])
       .pipe(
