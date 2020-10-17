@@ -1,0 +1,22 @@
+.custom-stuff-center {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+table {
+  max-height: 600px;
+  overflow-x: auto;
+  width: 100%;
+  display: block;
+  th {
+    padding-left: 25px;
+    padding-right: 25px;
+    min-width: 100px;
+  }
+  td {
+    padding-left: 25px;
+    padding-right: 25px;
+    min-width: 100px;
+  }
+}
