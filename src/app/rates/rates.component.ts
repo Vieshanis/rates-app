@@ -35,17 +35,22 @@ export class RatesComponent implements OnInit {
 
     this.rates$ = combineLatest([
       this.form.controls.base.valueChanges
+        // Emit start value
         .pipe(startWith(GLOBALS.defaultCurrency)),
       this.form.controls.date.valueChanges
         .pipe(
+          // Filter out invalid value
           filter(val => moment(GLOBALS.minDate).isSameOrBefore(val) && moment().isSameOrAfter(val)),
+          // Emit start value
           startWith(moment())
         )
     ])
       .pipe(
+        // Change observable to data call observable
         switchMap(([base, date]) => this.ratesService.getRates(base, moment(date).format(GLOBALS.dateFormat))
           .pipe(
             map(res =>
+              // Transform response to table data
               Object.keys(res.rates)
                 .map(key => ({ name: key, value: res.rates[key] }))
                 .filter(item => item.name !== res.base)
