@@ -1,3 +1,9 @@
+# How to open
+## Easy way
+https://vieshanis.github.io/rates-app/lv/ (Latvian)
+https://vieshanis.github.io/rates-app/en-US/ (English)
+
+
 # RatesApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
