@@ -5,7 +5,7 @@ import { filter, map, startWith, switchMap } from 'rxjs/operators';
 import { AllCurrencyNames } from '../shared/data';
 import { GLOBALS } from '../shared/globals';
 import { Rate } from '../shared/rates.model';
-import { RatesService } from './rates.service';
+import { RatesService } from '../shared/services/rates.service';
 import * as moment from 'moment';
 
 @Component({

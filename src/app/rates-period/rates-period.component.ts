@@ -6,7 +6,7 @@ import { startWith, filter, debounceTime, switchMap, map } from 'rxjs/operators'
 import { AllCurrencyNames } from '../shared/data';
 import { GLOBALS } from '../shared/globals';
 import { Rates } from '../shared/rates.model';
-import { RatesPeriodService } from './rates-period.service';
+import { RatesPeriodService } from '../shared/services/rates-period.service';
 
 @Component({
   selector: 'app-rates-period',
