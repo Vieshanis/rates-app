@@ -15,8 +15,10 @@
       <mat-form-field appearance="fill">
         <mat-label i18n="Date range input label">Enter a date range</mat-label>
         <mat-date-range-input [rangePicker]="picker" [min]="minDate" [max]="maxDate">
-          <input formControlName="startDate" matStartDate i18n-placeholder="Start date input placeholder" placeholder="Start date">
-          <input formControlName="endDate" matEndDate i18n-placeholder="End date input placeholder" placeholder="End date">
+          <input formControlName="startDate" matStartDate i18n-placeholder="Start date input placeholder"
+            placeholder="Start date">
+          <input formControlName="endDate" matEndDate i18n-placeholder="End date input placeholder"
+            placeholder="End date">
         </mat-date-range-input>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
@@ -25,19 +27,28 @@
     </div>
   </form>
 
-  <div class="custom-stuff-center" *ngIf="rates$ | async as rates">
-    <table mat-table [dataSource]="rates" class="mat-elevation-z8">
+  <div *ngIf="rates$ | async as rates">
+    <div class="custom-stuff-center" *ngIf="rates.length; else noResults">
 
-      <div *ngFor="let header of displayedColumns">
-        <ng-container matColumnDef="{{header}}">
-          <th mat-header-cell *matHeaderCellDef> {{ header === 'date' ? 'Date' : header }} </th>
-          <td mat-cell *matCellDef="let rate"> {{ rate[header] }} </td>
-        </ng-container>
+      <table mat-table [dataSource]="rates" class="mat-elevation-z8">
+
+        <div *ngFor="let header of displayedColumns">
+          <ng-container matColumnDef="{{header}}">
+            <th mat-header-cell *matHeaderCellDef> {{ header === 'date' ? 'Date' : header }} </th>
+            <td mat-cell *matCellDef="let rate"> {{ rate[header] }} </td>
+          </ng-container>
+        </div>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+    </div>
+    <ng-template #noResults>
+      <div class="custom-stuff-center no-results">
+        <h3 i18n="No results message">No results, try different date</h3>
       </div>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+    </ng-template>
   </div>
 
 </div>
