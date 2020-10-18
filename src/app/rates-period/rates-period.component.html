@@ -4,7 +4,7 @@
     <div class="custom-stuff-center">
 
       <mat-form-field class="pr-10" appearance="fill">
-        <mat-label>Base curreny</mat-label>
+        <mat-label i18n="Base currency input label">Base curreny</mat-label>
         <mat-select formControlName="base">
           <mat-option *ngFor="let currency of currencyOptions" placeholder="Base" [value]="currency">
             {{ currency }}
@@ -13,10 +13,10 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Enter a date range</mat-label>
+        <mat-label i18n="Date range input label">Enter a date range</mat-label>
         <mat-date-range-input [rangePicker]="picker" [min]="minDate" [max]="maxDate">
-          <input formControlName="startDate" matStartDate placeholder="Start date">
-          <input formControlName="endDate" matEndDate placeholder="End date">
+          <input formControlName="startDate" matStartDate i18n-placeholder="Start date input placeholder" placeholder="Start date">
+          <input formControlName="endDate" matEndDate i18n-placeholder="End date input placeholder" placeholder="End date">
         </mat-date-range-input>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>

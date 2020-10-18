@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="524af92098c45b0ceb5d728964a69c4b5d4a8fc3" datatype="html">
+        <source>Rates by date</source>
+        <target>Valūtas kurss pēc datuma</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Rates by date button</note>
+      </trans-unit>
+      <trans-unit id="2872affdd3a5afe5d476b9cb1fc75625043074c5" datatype="html">
+        <source>Rates by period</source>
+        <target>Valūtas kurss pēc perioda</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">Rates by period button</note>
+      </trans-unit>
+      <trans-unit id="8d015ba310227337590ac4758367cfce013432df" datatype="html">
+        <source>Base curreny</source>
+        <target>Bāzes valūta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/rates/rates.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/rates-period/rates-period.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Base currency input label</note>
+      </trans-unit>
+      <trans-unit id="a0f81e5bea90c635fc975ed6662e66b083100d61" datatype="html">
+        <source>Base</source>
+        <target>Bāze</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/rates/rates.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Base input placeholder</note>
+      </trans-unit>
+      <trans-unit id="3317b8688eb2cfabc4021cd7b2926b32f3864ad2" datatype="html">
+        <source>Choose a date</source>
+        <target>Izvēlies datumu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/rates/rates.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Date input label</note>
+      </trans-unit>
+      <trans-unit id="c7f88dbdb65ee517638242804672ece197acfcec" datatype="html">
+        <source>Curreny</source>
+        <target>Valūta</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/rates/rates.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">Currency column label</note>
+      </trans-unit>
+      <trans-unit id="5049e204c14c648691ac775a64fb504467aeb549" datatype="html">
+        <source>Value</source>
+        <target>Kurss</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/rates/rates.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">Value column label</note>
+      </trans-unit>
+      <trans-unit id="1d7ed2343579b6d2528114177b13f59e55b96cef" datatype="html">
+        <source>Enter a date range</source>
+        <target>Ievadi periodu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/rates-period/rates-period.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Date range input label</note>
+      </trans-unit>
+      <trans-unit id="77bbe324b08f6636fb50f673cea05313b86fb692" datatype="html">
+        <source>Start date</source>
+        <target>Sākuma datums</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/rates-period/rates-period.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">Start date input placeholder</note>
+      </trans-unit>
+      <trans-unit id="f60960faa2cd3e0db11e48688774d05dfa9d715b" datatype="html">
+        <source>End date</source>
+        <target>Beigu datums</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/rates-period/rates-period.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">End date input placeholder</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

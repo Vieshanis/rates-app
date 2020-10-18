@@ -34,6 +34,11 @@
             "scripts": []
           },
           "configurations": {
+            "lv": {
+              "localize": [
+                "lv"
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -70,6 +75,9 @@
             "browserTarget": "rates-app:build"
           },
           "configurations": {
+            "lv": {
+              "browserTarget": "rates-app:build:lv"
+            },
             "production": {
               "browserTarget": "rates-app:build:production"
             }
@@ -123,6 +131,11 @@
               "devServerTarget": "rates-app:serve:production"
             }
           }
+        }
+      },
+      "i18n": {
+        "locales": {
+          "lv": "src/locale/messages.lv.xlf"
         }
       }
     }
