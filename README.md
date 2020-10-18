@@ -4,6 +4,23 @@ https://vieshanis.github.io/rates-app/lv/ (Latvian)
 
 https://vieshanis.github.io/rates-app/en-US/ (English)
 
+## No so easy way
+
+1. download & install git from here https://git-scm.com/downloads (just click next in all places)
+
+2. download nodejs from here https://nodejs.org/en/ (recomened for most users)
+
+3. Do right click on desktop => git bash here
+
+4. Type `npm install -g @angular/cli` and press enter
+
+5. Clone this repo and open terminal inside folder
+
+6. Run `npm install`
+
+7. Run `ng serve -o`
+
+
 
 # RatesApp
 
