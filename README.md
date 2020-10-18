@@ -4,7 +4,7 @@ https://vieshanis.github.io/rates-app/lv/ (Latvian)
 
 https://vieshanis.github.io/rates-app/en-US/ (English)
 
-## No so easy way
+## Not so easy way
 
 1. download & install git from here https://git-scm.com/downloads (just click next in all places)
 
@@ -14,7 +14,7 @@ https://vieshanis.github.io/rates-app/en-US/ (English)
 
 4. Type `npm install -g @angular/cli` and press enter
 
-5. Clone this repo and open terminal inside folder
+5. Clone this repo and open a terminal inside the repo folder
 
 6. Run `npm install`
 
