@@ -85,4 +85,8 @@ describe('RatesPeriodComponent', () => {
     });
   }));
 
+  // Since I use debounceTime on obvservable because dateRange input is triggering lots of valuechanges for date inputs
+  // this is giving some strange behavior inside tests which I wasnt able to resolve in time
+  // For more tests please see rates.component.spec.ts
+
 });
