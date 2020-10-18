@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import * as moment from 'moment';
 import { Observable, combineLatest } from 'rxjs';
-import { startWith, filter, debounceTime, switchMap, map } from 'rxjs/operators';
+import { startWith, filter, debounceTime, switchMap, map, take } from 'rxjs/operators';
 import { AllCurrencyNames } from '../shared/data';
 import { GLOBALS } from '../shared/globals';
 import { Rates } from '../shared/rates.model';
@@ -37,20 +37,24 @@ export class RatesPeriodComponent implements OnInit {
     this.rates$ = combineLatest([
       this.form.controls.base.valueChanges
         .pipe(startWith(GLOBALS.defaultCurrency)),
-      this.form.controls.startDate.valueChanges
+      combineLatest([
+        this.form.controls.startDate.valueChanges
+          .pipe(
+            filter(val => moment(GLOBALS.minDate).isSameOrBefore(val) && moment().isSameOrAfter(val))
+          ),
+        this.form.controls.endDate.valueChanges
+          .pipe(
+            filter(val => moment(GLOBALS.minDate).isSameOrBefore(val) && moment().isSameOrAfter(val))
+          ),
+      ])
         .pipe(
-          filter(val => moment(GLOBALS.minDate).isSameOrBefore(val) && moment().isSameOrAfter(val))
-        ),
-      this.form.controls.endDate.valueChanges
-        .pipe(
-          filter(val => moment(GLOBALS.minDate).isSameOrBefore(val) && moment().isSameOrAfter(val))
+          debounceTime(200),
+          filter(([startDate, endDate]) => moment(endDate).isSameOrAfter(moment(startDate)))
         )
     ])
       .pipe(
-        debounceTime(200),
-        filter(([base, startDate, endDate]) => moment(endDate).isSameOrAfter(moment(startDate))),
-        switchMap(([base, startDate, endDate]) =>
-          this.ratesPeriodService.getRatesPeriod(base, moment(startDate).format(GLOBALS.dateFormat), moment(endDate).format(GLOBALS.dateFormat))
+        switchMap(([base, range]) =>
+          this.ratesPeriodService.getRatesPeriod(base, moment(range[0]).format(GLOBALS.dateFormat), moment(range[1]).format(GLOBALS.dateFormat))
             .pipe(
               map(res => {
                 this.displayedColumns = (['date'].concat(
