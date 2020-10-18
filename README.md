@@ -1,6 +1,7 @@
 # How to open
 ## Easy way
 https://vieshanis.github.io/rates-app/lv/ (Latvian)
+
 https://vieshanis.github.io/rates-app/en-US/ (English)
 
 
