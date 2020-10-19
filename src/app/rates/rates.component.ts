@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Observable, combineLatest } from 'rxjs';
-import { filter, map, startWith, switchMap } from 'rxjs/operators';
+import { Observable, combineLatest, of } from 'rxjs';
+import { catchError, filter, map, startWith, switchMap } from 'rxjs/operators';
 import { AllCurrencyNames } from '../shared/data';
 import { GLOBALS } from '../shared/globals';
 import { Rate } from '../shared/rates.model';
@@ -55,7 +55,8 @@ export class RatesComponent implements OnInit {
                 .map(key => ({ name: key, value: res.rates[key] }))
                 .filter(item => item.name !== res.base)
                 .sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
-            )
+            ),
+            catchError(() => of([]))
           )
         )
       );

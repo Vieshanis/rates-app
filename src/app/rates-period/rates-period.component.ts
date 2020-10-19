@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import * as moment from 'moment';
-import { Observable, combineLatest } from 'rxjs';
-import { startWith, filter, debounceTime, switchMap, map } from 'rxjs/operators';
+import { Observable, combineLatest, of } from 'rxjs';
+import { startWith, filter, debounceTime, switchMap, map, catchError } from 'rxjs/operators';
 import { AllCurrencyNames } from '../shared/data';
 import { GLOBALS } from '../shared/globals';
 import { Rates } from '../shared/rates.model';
@@ -87,7 +87,9 @@ export class RatesPeriodComponent implements OnInit {
                       });
                     return rates;
                   });
-              })
+              }),
+              // Handle error
+              catchError(() => of([]))
             )
         )
       );
