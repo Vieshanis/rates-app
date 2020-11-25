@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import * as moment from 'moment';
-import { Observable, combineLatest, of } from 'rxjs';
-import { startWith, filter, debounceTime, switchMap, map, catchError, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { filter, debounceTime, switchMap, map, catchError, tap } from 'rxjs/operators';
 import { AllCurrencyNames } from '../shared/data';
 import { GLOBALS } from '../shared/globals';
 import { Rates } from '../shared/rates.model';
@@ -15,12 +15,11 @@ import { RatesPeriodService } from '../shared/services/rates-period.service';
 })
 export class RatesPeriodComponent implements OnInit {
 
-  public rates$: Observable<Rates[]>;
+  public tableData$: Observable<{ rates: Rates[], displayedColumns: string[] }>;
   public form: FormGroup;
   public currencyOptions = AllCurrencyNames;
   public minDate = new Date(GLOBALS.minDate);
   public maxDate = new Date();
-  public displayedColumns: string[];
 
   constructor(
     private ratesPeriodService: RatesPeriodService,
@@ -34,7 +33,7 @@ export class RatesPeriodComponent implements OnInit {
       endDate: new Date()
     });
 
-    this.rates$ = this.form.valueChanges
+    this.tableData$ = this.form.valueChanges
       .pipe(
         debounceTime(200),
         filter(val => moment(val.endDate).isSameOrAfter(moment(val.startDate))),
@@ -43,14 +42,8 @@ export class RatesPeriodComponent implements OnInit {
         switchMap(val =>
           this.ratesPeriodService.getRatesPeriod(val.base, moment(val.startDate).format(GLOBALS.dateFormat), moment(val.endDate).format(GLOBALS.dateFormat))
             .pipe(
-              map(res => {
-                // Update table columns to exclude base rate
-                this.displayedColumns = (['date'].concat(
-                  AllCurrencyNames
-                    .filter(item => item !== res.base)
-                ));
-
-                return Object.keys(res.rates)
+              map(res => ({
+                rates: Object.keys(res.rates)
                   // Sort values by date
                   .sort((a, b) => (a < b) ? 1 : ((b < a) ? -1 : 0))
                   // Transform response to table data
@@ -67,10 +60,15 @@ export class RatesPeriodComponent implements OnInit {
                         }
                       });
                     return rates;
-                  });
-              }),
+                  }),
+                // Update table columns to exclude base rate
+                displayedColumns: (['date'].concat(
+                  AllCurrencyNames
+                    .filter(item => item !== res.base)
+                ))
+              })),
               // Handle error
-              catchError(() => of([]))
+              catchError(() => of({ rates: [], displayedColumns: [] }))
             )
         )
       );
